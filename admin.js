@@ -385,3 +385,4 @@ function initAdmin() {
   document.getElementById('tg-token').value = TELEGRAM_BOT_TOKEN;
   document.getElementById('tg-chat').value  = TELEGRAM_CHAT_ID;
 }
+console.log("Admin JS is connected");
