@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Prime Kits Premium — Luxury Football Jerseys & Streetwear. EST. 2026">
+  <title>Prime Kits Premium | Luxury Football Jerseys</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/favicon.ico">
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Page Loader -->
+  <div id="page-loader">
+    <div class="loader-crown">&#9819;</div>
+    <div class="loader-logo">PRIME KITS</div>
+    <div style="font-family:var(--font-ui);font-size:0.55rem;letter-spacing:0.5em;color:var(--white-muted);text-transform:uppercase;margin-top:-1rem">Premium</div>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <span class="crown-icon">♛</span>
+      PRIME KITS
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#featured">Shop</a></li>
+      <li><a href="index.html#new-arrivals">New Arrivals</a></li>
+      <li><a href="index.html#trending">Trending</a></li>
+      <li><a href="index.html#sale">Sale</a></li>
+      <li><a href="index.html#categories">Categories</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="search-btn" title="Search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <button class="nav-icon-btn" onclick="toggleCart()" title="Cart">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count" style="display:none">0</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu">
+    <button id="mobile-close" class="mobile-close">✕</button>
+    <a href="index.html#featured">Shop</a>
+    <a href="index.html#new-arrivals">New Arrivals</a>
+    <a href="index.html#trending">Trending</a>
+    <a href="index.html#sale">Sale</a>
+    <a href="index.html#categories">Categories</a>
+  </div>
+
+  <!-- Search Overlay -->
+  <div id="search-overlay">
+    <button id="search-close" class="search-close">✕</button>
+    <div style="font-family:var(--font-ui);font-size:0.6rem;letter-spacing:0.4em;color:var(--white-muted);text-transform:uppercase;margin-bottom:1rem">Search Products</div>
+    <input id="search-input" type="text" placeholder="Type to search…">
+    <div id="search-results" style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;margin-top:1.5rem;max-width:700px;width:100%"></div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div id="cart-overlay" onclick="toggleCart()"></div>
+  <aside id="cart-drawer">
+    <div class="cart-header">
+      <h2>♛ Your Cart</h2>
+      <button class="cart-close" onclick="toggleCart()">✕</button>
+    </div>
+    <div id="cart-items-list">
+      <div id="cart-empty">
+        <div class="empty-icon">♛</div>
+        <p>Your cart is empty</p>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span class="cart-total-label">Total</span>
+        <span id="cart-total">$0.00</span>
+      </div>
+      <button class="btn-gold btn-full" onclick="goToCheckout()"><span>Proceed to Checkout</span></button>
+    </div>
+  </aside>
+
+  <!-- ═══════════════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-particles"></div>
+    <div class="hero-ornament-top">♛</div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Est. 2026 · Premium Collection</p>
+      <h1 class="hero-title">PRIME<br>KITS</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-sub">Where Football Meets Luxury Streetwear</p>
+      <div class="hero-ctas">
+        <a href="#featured" class="btn-gold"><span>Shop Collection</span></a>
+        <a href="#new-arrivals" class="btn-outline">New Arrivals</a>
+      </div>
+    </div>
+
+    <div class="hero-ornament-bottom">♛</div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="dot"></span>Premium Quality</span>
+      <span class="marquee-item"><span class="dot"></span>Authentic Jerseys</span>
+      <span class="marquee-item"><span class="dot"></span>Free Shipping on Orders $50+</span>
+      <span class="marquee-item"><span class="dot"></span>New Arrivals Weekly</span>
+      <span class="marquee-item"><span class="dot"></span>Luxury Streetwear</span>
+      <span class="marquee-item"><span class="dot"></span>Est. 2026</span>
+      <span class="marquee-item"><span class="dot"></span>Premium Quality</span>
+      <span class="marquee-item"><span class="dot"></span>Authentic Jerseys</span>
+      <span class="marquee-item"><span class="dot"></span>Free Shipping on Orders $50+</span>
+      <span class="marquee-item"><span class="dot"></span>New Arrivals Weekly</span>
+      <span class="marquee-item"><span class="dot"></span>Luxury Streetwear</span>
+      <span class="marquee-item"><span class="dot"></span>Est. 2026</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       FEATURED PRODUCTS
+  ═══════════════════════════════════════════ -->
+  <section id="featured" class="section">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:3rem">
+        <p class="section-label">Curated Selection</p>
+        <h2 class="section-title">Featured <span>Collection</span></h2>
+      </div>
+
+      <!-- Category Filters -->
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem">
+        <button class="filter-btn btn-gold active" data-cat="all" style="padding:0.5rem 1.5rem"><span>All</span></button>
+        <button class="filter-btn btn-outline" data-cat="football" style="padding:0.5rem 1.5rem">Football</button>
+        <button class="filter-btn btn-outline" data-cat="streetwear" style="padding:0.5rem 1.5rem">Streetwear</button>
+        <button class="filter-btn btn-outline" data-cat="retro" style="padding:0.5rem 1.5rem">Retro</button>
+        <button class="filter-btn btn-outline" data-cat="limited" style="padding:0.5rem 1.5rem">Limited</button>
+      </div>
+
+      <div id="featured-grid" class="products-grid">
+        <!-- Loaded from Firebase -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SALE BANNER
+  ═══════════════════════════════════════════ -->
+  <section id="sale">
+    <div class="container">
+      <div class="sale-banner">
+        <div class="sale-pct">30%</div>
+        <h2>SEASON SALE</h2>
+        <p style="font-family:var(--font-ui);font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--white-muted);margin-bottom:2rem">
+          Ends in: <span id="sale-countdown" style="color:var(--gold);font-weight:600">00:00:00</span>
+        </p>
+        <a href="#featured" class="btn-gold"><span>Shop Sale Now</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       NEW ARRIVALS
+  ═══════════════════════════════════════════ -->
+  <section id="new-arrivals" class="section">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem">
+        <div>
+          <p class="section-label" style="text-align:left">Just Dropped</p>
+          <h2 class="section-title">New <span>Arrivals</span></h2>
+        </div>
+        <a href="#featured" class="btn-outline" style="padding:0.6rem 1.5rem">View All</a>
+      </div>
+      <div id="new-arrivals-grid" class="products-grid">
+        <!-- Loaded from Firebase -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CATEGORIES
+  ═══════════════════════════════════════════ -->
+  <section id="categories" class="section" style="background:var(--black-soft)">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:3rem">
+        <p class="section-label">Browse By</p>
+        <h2 class="section-title">Shop <span>Categories</span></h2>
+      </div>
+      <div class="categories-grid">
+        <div class="category-card" onclick="filterByCategory('football')">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#0a0a0a,#1a0a00);display:flex;align-items:center;justify-content:center;font-size:5rem">⚽</div>
+          <div class="category-label">
+            <h3>Football</h3>
+            <span>View All</span>
+          </div>
+        </div>
+        <div class="category-card" onclick="filterByCategory('streetwear')">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#0a0a0a,#001a0a);display:flex;align-items:center;justify-content:center;font-size:5rem">👕</div>
+          <div class="category-label">
+            <h3>Streetwear</h3>
+            <span>View All</span>
+          </div>
+        </div>
+        <div class="category-card" onclick="filterByCategory('retro')">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#0a0a0a,#0a001a);display:flex;align-items:center;justify-content:center;font-size:5rem">🏆</div>
+          <div class="category-label">
+            <h3>Retro</h3>
+            <span>View All</span>
+          </div>
+        </div>
+        <div class="category-card" onclick="filterByCategory('limited')">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#0a0a0a,#1a1000);display:flex;align-items:center;justify-content:center;font-size:5rem">♛</div>
+          <div class="category-label">
+            <h3>Limited Ed.</h3>
+            <span>View All</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       TRENDING
+  ═══════════════════════════════════════════ -->
+  <section id="trending" class="section">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:3rem">
+        <p class="section-label">Hot Right Now</p>
+        <h2 class="section-title"><span>Trending</span> Picks</h2>
+      </div>
+      <div id="trending-grid" class="products-grid"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">♛ PRIME KITS</div>
+          <p>Premium football jerseys and luxury streetwear. Where passion for the game meets elevated style.</p>
+          <div class="socials">
+            <a href="#" class="social-link" title="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="social-link" title="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-link" title="TikTok">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+            </a>
+            <a href="#" class="social-link" title="Telegram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <a href="#featured">All Products</a>
+          <a href="#new-arrivals">New Arrivals</a>
+          <a href="#trending">Trending</a>
+          <a href="#sale">Sale</a>
+          <a href="#categories">Categories</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="#">Sizing Guide</a>
+          <a href="#">Shipping Info</a>
+          <a href="#">Returns</a>
+          <a href="#">FAQ</a>
+          <a href="#">Contact Us</a>
+        </div>
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p style="color:var(--white-muted);font-size:0.9rem;margin-bottom:0.5rem">Get early access to new drops and exclusive deals.</p>
+          <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+            <input type="email" placeholder="Your email" required>
+            <button type="submit">→</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Prime Kits Premium. All rights reserved.</p>
+        <p>Made with ♛ for the Beautiful Game</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Inline helpers -->
+  <script>
+    function filterByCategory(cat) {
+      document.querySelector(`[data-cat="${cat}"]`)?.click();
+      document.getElementById('featured')?.scrollIntoView({ behavior: 'smooth' });
+    }
+    function subscribeNewsletter(e) {
+      e.preventDefault();
+      if(typeof showToast !== 'undefined') showToast('Subscribed successfully! Welcome to Prime Kits.', 'success');
+      e.target.reset();
+    }
+  </script>
+
+  <script type="module" src="cart.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

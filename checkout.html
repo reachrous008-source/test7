@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — Prime Kits Premium</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+  <div id="page-loader"><div class="loader-logo">PRIME KITS</div><div class="loader-bar"><div class="loader-bar-fill"></div></div></div>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo"><span class="crown-icon">♛</span> PRIME KITS</a>
+    <ul class="nav-links">
+      <li><a href="index.html">← Back to Shop</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" onclick="toggleCart()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count" style="display:none">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Cart Drawer -->
+  <div id="cart-overlay" onclick="toggleCart()"></div>
+  <aside id="cart-drawer">
+    <div class="cart-header"><h2>♛ Your Cart</h2><button class="cart-close" onclick="toggleCart()">✕</button></div>
+    <div id="cart-items-list"><div id="cart-empty"><div class="empty-icon">♛</div><p>Your cart is empty</p></div></div>
+    <div class="cart-footer">
+      <div class="cart-total-row"><span class="cart-total-label">Total</span><span id="cart-total">$0.00</span></div>
+    </div>
+  </aside>
+
+  <main style="padding-top:100px;min-height:80vh">
+    <div class="container" style="padding:3rem 2rem">
+      <div style="text-align:center;margin-bottom:3rem">
+        <p class="section-label">Secure Checkout</p>
+        <h1 class="section-title">Complete Your <span>Order</span></h1>
+      </div>
+
+      <div class="checkout-layout">
+
+        <!-- ── Left: Form ── -->
+        <div class="checkout-form">
+
+          <!-- Customer Info -->
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.15em;color:var(--gold);margin-bottom:1.25rem;text-transform:uppercase">Customer Information</h3>
+            <div style="display:flex;flex-direction:column;gap:1rem">
+              <div class="form-group">
+                <label class="form-label">Full Name *</label>
+                <input type="text" id="customer-name" class="form-input" placeholder="Your full name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone Number *</label>
+                <input type="tel" id="customer-phone" class="form-input" placeholder="+855 __ ___ ____" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Province *</label>
+                <select id="customer-province" class="form-input" required>
+                  <option value="">Select Province</option>
+                  <option>Phnom Penh</option>
+                  <option>Siem Reap</option>
+                  <option>Battambang</option>
+                  <option>Kampot</option>
+                  <option>Sihanoukville</option>
+                  <option>Kandal</option>
+                  <option>Kampong Cham</option>
+                  <option>Kampong Chhnang</option>
+                  <option>Kampong Speu</option>
+                  <option>Kampong Thom</option>
+                  <option>Kep</option>
+                  <option>Koh Kong</option>
+                  <option>Kratie</option>
+                  <option>Mondulkiri</option>
+                  <option>Oddar Meanchey</option>
+                  <option>Pailin</option>
+                  <option>Preah Vihear</option>
+                  <option>Prey Veng</option>
+                  <option>Pursat</option>
+                  <option>Ratanakiri</option>
+                  <option>Stung Treng</option>
+                  <option>Svay Rieng</option>
+                  <option>Takeo</option>
+                  <option>Tboung Khmum</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shipping -->
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.15em;color:var(--gold);margin-bottom:1.25rem;text-transform:uppercase">Shipping Method</h3>
+            <div class="shipping-options">
+              <div class="shipping-option" id="ship-jnt">
+                <label>
+                  <input type="radio" name="shipping" value="jnt" checked onchange="updateShipping()">
+                  <div>
+                    <div style="font-family:var(--font-ui);font-size:0.75rem;font-weight:600;letter-spacing:0.1em">J&T Express</div>
+                    <div style="color:var(--white-muted);font-size:0.75rem">2-3 business days</div>
+                  </div>
+                </label>
+                <span style="color:var(--gold);font-family:var(--font-ui)">$2.50</span>
+              </div>
+              <div class="shipping-option" id="ship-vb">
+                <label>
+                  <input type="radio" name="shipping" value="vireak-buntham" onchange="updateShipping()">
+                  <div>
+                    <div style="font-family:var(--font-ui);font-size:0.75rem;font-weight:600;letter-spacing:0.1em">Vireak Buntham</div>
+                    <div style="color:var(--white-muted);font-size:0.75rem">1-2 business days</div>
+                  </div>
+                </label>
+                <span style="color:var(--gold);font-family:var(--font-ui)">$3.00</span>
+              </div>
+              <div class="shipping-option" id="ship-zto">
+                <label>
+                  <input type="radio" name="shipping" value="zto" onchange="updateShipping()">
+                  <div>
+                    <div style="font-family:var(--font-ui);font-size:0.75rem;font-weight:600;letter-spacing:0.1em">ZTO Express</div>
+                    <div style="color:var(--white-muted);font-size:0.75rem">3-5 business days</div>
+                  </div>
+                </label>
+                <span style="color:var(--gold);font-family:var(--font-ui)">$2.00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment -->
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1.1rem;letter-spacing:0.15em;color:var(--gold);margin-bottom:1.25rem;text-transform:uppercase">Payment — ABA Bank</h3>
+            <div class="qr-section">
+              <p style="font-family:var(--font-ui);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--white-muted);margin-bottom:1rem">Scan QR Code to Pay</p>
+              <!-- Replace with your actual ABA QR code image -->
+              <div class="qr-img" style="display:flex;align-items:center;justify-content:center;height:180px;background:var(--black-card);border:1px solid var(--border)">
+                <div style="text-align:center;color:var(--white-muted)">
+                  <div style="font-size:3rem">💳</div>
+                  <div style="font-family:var(--font-ui);font-size:0.65rem;letter-spacing:0.15em;margin-top:0.5rem">Replace with your ABA QR</div>
+                  <div style="font-family:var(--font-ui);font-size:0.65rem;color:var(--gold);margin-top:0.25rem">See SETUP.md</div>
+                </div>
+              </div>
+              <p style="font-family:var(--font-ui);font-size:0.7rem;color:var(--white-muted);margin-top:0.75rem">Account: <strong style="color:var(--gold)">PRIME KITS PREMIUM</strong></p>
+            </div>
+
+            <!-- Upload screenshot -->
+            <div style="margin-top:1.5rem">
+              <label class="form-label" style="display:block;margin-bottom:0.75rem">Upload Payment Screenshot *</label>
+              <div class="upload-zone" id="upload-zone"
+                onclick="document.getElementById('payment-proof-input').click()"
+                ondragover="event.preventDefault();this.classList.add('dragover')"
+                ondragleave="this.classList.remove('dragover')"
+                ondrop="handleDrop(event)">
+                <div class="upload-icon">📷</div>
+                <p>Click or drag to upload screenshot</p>
+                <p style="font-size:0.65rem;margin-top:0.25rem">JPG, PNG up to 10MB</p>
+              </div>
+              <input type="file" id="payment-proof-input" accept="image/*" style="display:none" onchange="previewProof(event)">
+              <div id="proof-preview" style="margin-top:0.75rem"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Right: Summary ── -->
+        <div>
+          <div class="order-summary-card">
+            <h2>Order Summary</h2>
+            <div class="summary-items" id="summary-items">
+              <!-- Rendered by JS -->
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-row">
+              <span style="font-family:var(--font-ui);font-size:0.75rem;color:var(--white-muted)">Subtotal</span>
+              <span id="summary-subtotal">$0.00</span>
+            </div>
+            <div class="summary-row">
+              <span style="font-family:var(--font-ui);font-size:0.75rem;color:var(--white-muted)">Shipping</span>
+              <span id="summary-shipping">$2.50</span>
+            </div>
+            <div class="summary-row total">
+              <span>Total</span>
+              <span id="summary-total">$0.00</span>
+            </div>
+            <button class="btn-gold btn-full" style="margin-top:1.5rem" onclick="placeOrder()">
+              <span>Place Order ♛</span>
+            </button>
+            <p style="font-family:var(--font-ui);font-size:0.6rem;letter-spacing:0.1em;color:var(--white-muted);text-align:center;margin-top:1rem">🔒 Secure &amp; Safe Checkout</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="success-modal">
+    <div class="modal" style="text-align:center;max-width:500px">
+      <div style="font-size:3rem;margin-bottom:1rem">✓</div>
+      <h2 style="font-family:var(--font-display);font-size:1.5rem;color:var(--gold);margin-bottom:0.75rem">Order Placed!</h2>
+      <p style="color:var(--white-muted);margin-bottom:0.5rem">Thank you for your order. We'll contact you shortly.</p>
+      <p id="success-order-id" style="font-family:var(--font-ui);font-size:0.7rem;letter-spacing:0.2em;color:var(--gold);margin-bottom:2rem"></p>
+      <a href="index.html" class="btn-gold"><span>Continue Shopping</span></a>
+    </div>
+  </div>
+
+  <script>
+    let proofFile = null;
+    let shippingFee = 2.5;
+    const shippingFees = { jnt: 2.5, 'vireak-buntham': 3.0, zto: 2.0 };
+
+    function updateShipping() {
+      const selected = document.querySelector('input[name="shipping"]:checked')?.value || 'jnt';
+      shippingFee = shippingFees[selected] || 2.5;
+      document.getElementById('summary-shipping').textContent = `$${shippingFee.toFixed(2)}`;
+      recalcTotal();
+      // Highlight selected
+      document.querySelectorAll('.shipping-option').forEach(o => o.classList.remove('selected'));
+      document.querySelector(`input[value="${selected}"]`)?.closest('.shipping-option').classList.add('selected');
+    }
+
+    function recalcTotal() {
+      const subtotal = getCartTotal();
+      const total = subtotal + shippingFee;
+      document.getElementById('summary-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+      document.getElementById('summary-total').textContent = `$${total.toFixed(2)}`;
+    }
+
+    function renderSummary() {
+      const cart = getCart();
+      const el = document.getElementById('summary-items');
+      el.innerHTML = cart.map(item => `
+        <div class="summary-item">
+          <div class="summary-item-img"><img src="${item.image || 'assets/placeholder.jpg'}" alt="${item.title}"></div>
+          <div style="flex:1">
+            <div style="font-size:0.9rem">${item.title}</div>
+            <div style="font-family:var(--font-ui);font-size:0.7rem;color:var(--white-muted)">Size: ${item.size} × ${item.quantity}</div>
+          </div>
+          <span style="color:var(--gold);font-family:var(--font-ui)">$${(item.price*item.quantity).toFixed(2)}</span>
+        </div>`).join('') || '<p style="color:var(--white-muted);font-size:0.85rem;text-align:center">Cart is empty</p>';
+      recalcTotal();
+    }
+
+    function previewProof(e) {
+      proofFile = e.target.files[0];
+      if (!proofFile) return;
+      const url = URL.createObjectURL(proofFile);
+      document.getElementById('proof-preview').innerHTML = `
+        <img src="${url}" style="max-width:200px;border:1px solid var(--border)">
+        <p style="font-family:var(--font-ui);font-size:0.65rem;color:var(--gold);margin-top:0.5rem">✓ Screenshot uploaded</p>`;
+    }
+
+    function handleDrop(e) {
+      e.preventDefault();
+      document.getElementById('upload-zone').classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file && file.type.startsWith('image/')) {
+        proofFile = file;
+        const url = URL.createObjectURL(file);
+        document.getElementById('proof-preview').innerHTML = `<img src="${url}" style="max-width:200px;border:1px solid var(--border)">`;
+      }
+    }
+
+    async function placeOrder() {
+      const name     = document.getElementById('customer-name').value.trim();
+      const phone    = document.getElementById('customer-phone').value.trim();
+      const province = document.getElementById('customer-province').value;
+      const shipping = document.querySelector('input[name="shipping"]:checked')?.value || 'jnt';
+
+      if (!name || !phone || !province) { showToast('Please fill all required fields', 'error'); return; }
+      if (!proofFile) { showToast('Please upload payment screenshot', 'error'); return; }
+      if (getCart().length === 0) { showToast('Your cart is empty', 'error'); return; }
+
+      const btn = event.target;
+      btn.disabled = true; btn.textContent = 'Placing Order…';
+
+      try {
+        // Import Firebase modules dynamically
+        const { db, storage, collection, addDoc, serverTimestamp, ref, uploadBytes, getDownloadURL } = await import('./firebase-config.js');
+
+        // Upload proof
+        const storageRef = ref(storage, `payments/${Date.now()}_${proofFile.name}`);
+        await uploadBytes(storageRef, proofFile);
+        const proofUrl = await getDownloadURL(storageRef);
+
+        const orderId = 'PK-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(2,6).toUpperCase();
+        const total = getCartTotal() + shippingFee;
+
+        const orderData = {
+          orderId, name, phone, province,
+          shipping, items: getCart(),
+          subtotal: getCartTotal(),
+          shippingFee, total,
+          paymentProof: proofUrl,
+          status: 'pending',
+          createdAt: serverTimestamp()
+        };
+
+        await addDoc(collection(db, 'orders'), orderData);
+
+        // Send Telegram notification
+        await sendTelegramNotification(orderData);
+
+        // Show success
+        document.getElementById('success-order-id').textContent = `Order ID: ${orderId}`;
+        document.getElementById('success-modal').classList.add('open');
+        clearCart();
+
+      } catch (err) {
+        console.error(err);
+        showToast('Error placing order: ' + err.message, 'error');
+        btn.disabled = false; btn.textContent = 'Place Order ♛';
+      }
+    }
+
+    async function sendTelegramNotification(order) {
+      const token = localStorage.getItem('pk_tg_token');
+      const chatId = localStorage.getItem('pk_tg_chat');
+      if (!token || !chatId) return;
+
+      const items = order.items.map(i => `• ${i.title} (${i.size}) × ${i.quantity} — $${(i.price*i.quantity).toFixed(2)}`).join('\n');
+      const msg = `
+🛍 NEW ORDER — PRIME KITS PREMIUM
+━━━━━━━━━━━━━━━━━━━━
+
+🆔 Order ID: ${order.orderId}
+👤 Name: ${order.name}
+📞 Phone: ${order.phone}
+📍 Province: ${order.province}
+🚚 Shipping: ${order.shipping}
+
+📦 Items:
+${items}
+
+💰 Subtotal: $${order.subtotal.toFixed(2)}
+🚚 Shipping: $${order.shippingFee.toFixed(2)}
+💳 Total: $${order.total.toFixed(2)}
+
+🕐 Time: ${new Date().toLocaleString()}
+      `.trim();
+
+      try {
+        await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: chatId, text: msg, parse_mode: 'HTML' })
+        });
+
+        // Send payment proof photo
+        if (order.paymentProof) {
+          await fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: chatId, photo: order.paymentProof, caption: `Payment proof for ${order.orderId}` })
+          });
+        }
+      } catch (err) {
+        console.warn('Telegram notification failed:', err);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderSummary();
+      updateShipping();
+    });
+  </script>
+
+  <!-- Cursor + Navbar -->
+  <script>
+    window.addEventListener('load', () => { setTimeout(() => document.getElementById('page-loader')?.classList.add('hidden'), 1800); });
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursor-ring');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; if(cursor){cursor.style.left=mx+'px';cursor.style.top=my+'px';}});
+    function animRing(){if(ring){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';}requestAnimationFrame(animRing);}
+    animRing();
+    window.addEventListener('scroll', () => document.getElementById('navbar')?.classList.toggle('scrolled', window.scrollY > 60));
+  </script>
+
+  <script type="module" src="cart.js"></script>
+</body>
+</html>
