@@ -293,4 +293,20 @@ document.addEventListener('DOMContentLoaded', () => {
   loadTrending();
   initScrollAnimations();
   startCountdown(Date.now() + 2 * 24 * 3600 * 1000);
-});
+});import app from "./firebase-config.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const db = getFirestore(app);
+
+// TEST FIREBASE (add this only)
+async function testFirebase() {
+  await addDoc(collection(db, "test"), {
+    message: "it works",
+    time: Date.now()
+  });
+}
